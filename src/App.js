@@ -189,13 +189,13 @@ function App() {
                         <ul className="experience-list">
                           <li>
                             Odoo Developer and Integrator at YELTECH Solutions
-                            BTP, Casablanca (Sept 2022 - June 2024): Developed
+                            BTP, Casablanca (Feb 2025 - Aug 2025): Developed
                             Odoo modules for construction resource management
                             using Python, XML, and PostgreSQL.
                           </li>
                           <li>
-                            Website Creator at YELTECH Solutions BTP (June 2024
-                            - July 2024): Built a responsive WordPress site with
+                            Website Creator at YELTECH Solutions BTP (June 2025
+                            - July 2025): Built a responsive WordPress site with
                             Elementor and contact form integration.
                           </li>
                           <li>
