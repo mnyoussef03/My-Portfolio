@@ -1,8 +1,8 @@
-import React, { useState } from "react"; // Added useState
-import { Link } from "react-scroll"; // For smooth scrolling
+import React, { useState, useRef } from "react";
+import { Link } from "react-scroll";
+import emailjs from "@emailjs/browser";
 import {
   FaHtml5,
-  FaCss3Alt,
   FaJs,
   FaReact,
   FaPhp,
@@ -18,22 +18,40 @@ import {
   FaBriefcase,
   FaGraduationCap,
   FaArrowDown,
-  FaBook,
   FaServer,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 import "./App.css";
 
 function App() {
+  const [activeTab, setActiveTab] = useState("education");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [sending, setSending] = useState(false);
+  const form = useRef();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add form submission logic here (e.g., EmailJS)
-    alert(
-      "Message sent! (This is a demo—integrate with a backend for real use.)"
-    );
-  };
+    setSending(true);
 
-  // State for About tabs (default: Education)
-  const [activeTab, setActiveTab] = useState("education");
+    emailjs
+      .sendForm(
+        "service_k59k9gl", // ← remplace par ton Service ID
+        "template_9kjvd41", // ← remplace par ton Template ID
+        form.current,
+        "Uc7aEOmZ36b-fcea3", // ← remplace par ta Public Key
+      )
+      .then(() => {
+        alert("Message sent successfully!");
+        form.current.reset();
+      })
+      .catch(() => {
+        alert("Something went wrong. Please try again.");
+      })
+      .finally(() => {
+        setSending(false);
+      });
+  };
 
   return (
     <div className="App">
@@ -41,29 +59,63 @@ function App() {
       <nav className="navbar">
         <div className="nav-container">
           <div className="nav-logo">EL Mostain Youssef</div>
-          <ul className="nav-menu">
+
+          <button
+            className="burger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+
+          <ul className={`nav-menu ${menuOpen ? "open" : ""}`}>
             <li>
-              <Link to="home" smooth={true} duration={500}>
+              <Link
+                to="home"
+                smooth={true}
+                duration={500}
+                onClick={() => setMenuOpen(false)}
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="about" smooth={true} duration={500}>
+              <Link
+                to="about"
+                smooth={true}
+                duration={500}
+                onClick={() => setMenuOpen(false)}
+              >
                 About
               </Link>
             </li>
             <li>
-              <Link to="skills" smooth={true} duration={500}>
+              <Link
+                to="skills"
+                smooth={true}
+                duration={500}
+                onClick={() => setMenuOpen(false)}
+              >
                 Skills
               </Link>
             </li>
             <li>
-              <Link to="projects" smooth={true} duration={500}>
+              <Link
+                to="projects"
+                smooth={true}
+                duration={500}
+                onClick={() => setMenuOpen(false)}
+              >
                 Projects
               </Link>
             </li>
             <li>
-              <Link to="contact" smooth={true} duration={500}>
+              <Link
+                to="contact"
+                smooth={true}
+                duration={500}
+                onClick={() => setMenuOpen(false)}
+              >
                 Contact
               </Link>
             </li>
@@ -107,49 +159,41 @@ function App() {
         </div>
       </section>
 
-      {/* About Section - Side-by-Side: Text Left, Taller Image Right (With Tabs) */}
+      {/* About Section */}
       <section id="about" className="about">
         <div className="container">
           <h2>About Me</h2>
           <div className="about-content">
-            {/* Text on Left - With Tabs */}
             <div className="about-text">
               <p>
                 I'm a 22 year old Full-Stack Developer based in Casablanca,
                 passionate about building modern and efficient web applications.
                 With experience in technologies like JavaScript, PHP, Python,
                 React, and Laravel, I enjoy turning ideas into functional
-                digital solutions. I’ve also gained solid hands-on experience
+                digital solutions. I've also gained solid hands-on experience
                 working with ERP systems such as Odoo developing custom modules,
                 integrating data models, and designing user-friendly interfaces.
-                Curious and driven, I’m constantly improving my skills and
+                Curious and driven, I'm constantly improving my skills and
                 exploring new tools to deliver clean, scalable, and creative
                 solutions for real world problems.
               </p>
 
-              {/* Tabbed Details */}
               <div className="about-details">
-                {/* Tab Buttons */}
                 <div className="tabs">
                   <button
-                    className={`tab-button ${
-                      activeTab === "education" ? "active" : ""
-                    }`}
+                    className={`tab-button ${activeTab === "education" ? "active" : ""}`}
                     onClick={() => setActiveTab("education")}
                   >
                     <FaGraduationCap /> Education
                   </button>
                   <button
-                    className={`tab-button ${
-                      activeTab === "experience" ? "active" : ""
-                    }`}
+                    className={`tab-button ${activeTab === "experience" ? "active" : ""}`}
                     onClick={() => setActiveTab("experience")}
                   >
                     <FaBriefcase /> Experience
                   </button>
                 </div>
 
-                {/* Tab Content - Conditional Render */}
                 <div className="tab-content">
                   {activeTab === "education" ? (
                     <div className="detail">
@@ -212,7 +256,6 @@ function App() {
               </div>
             </div>
 
-            {/* Image on Right - Taller */}
             <div className="about-image">
               <img
                 src="/El_moustain_Youssef.png"
@@ -230,7 +273,6 @@ function App() {
           <h2>Skills</h2>
           <div className="skills-scroller">
             <div className="skills-track">
-              {/* Original skills */}
               <div className="skill-item">
                 <FaHtml5 size={50} />
                 <span>HTML/CSS/SCSS</span>
@@ -260,7 +302,7 @@ function App() {
                 <span>Git/GitHub</span>
               </div>
               <div className="skill-item">
-                <FaServer size={50} /> {/* Reuse for REST API */}
+                <FaServer size={50} />
                 <span>REST API/Postman</span>
               </div>
               {/* Duplicated for infinite loop */}
@@ -444,11 +486,28 @@ function App() {
         <div className="container">
           <h2>Contact Me</h2>
           <p>Let's discuss your next project or opportunity!</p>
-          <form onSubmit={handleSubmit} className="contact-form">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-            <button type="submit">Send Message</button>
+          <form ref={form} onSubmit={handleSubmit} className="contact-form">
+            <input
+              type="text"
+              name="from_name"
+              placeholder="Your Name"
+              required
+            />
+            <input
+              type="email"
+              name="from_email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows="5"
+              required
+            ></textarea>
+            <button type="submit" disabled={sending}>
+              {sending ? "Sending..." : "Send Message"}
+            </button>
           </form>
           <div className="social-links">
             <a
