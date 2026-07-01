@@ -138,14 +138,14 @@ function App() {
             development and experienced with ERP systems like Odoo.
           </p>
           <div className="hero-links">
-            <a
+            
               href="https://github.com/mnyoussef03"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaGithub />
             </a>
-            <a
+            
               href="https://linkedin.com/in/youssef-el-mostain"
               target="_blank"
               rel="noopener noreferrer"
@@ -365,12 +365,8 @@ function App() {
                 <span>Vite</span>
               </div>
               <div className="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo (Coming Soon)
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub (In Progress)
-                </a>
+                <span className="link-disabled">Live Demo (Coming Soon)</span>
+                <span className="link-disabled">GitHub (In Progress)</span>
               </div>
             </div>
             <div className="project-card">
@@ -387,10 +383,8 @@ function App() {
                 <span>MySQL</span>
               </div>
               <div className="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo (Coming Soon)
-                </a>
-                <a
+                <span className="link-disabled">Live Demo (Coming Soon)</span>
+                
                   href="https://github.com/mnyoussef03/ressources_h"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -417,10 +411,8 @@ function App() {
                 <span>SCSS</span>
               </div>
               <div className="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo (Coming Soon)
-                </a>
-                <a
+                <span className="link-disabled">Live Demo (Coming Soon)</span>
+                
                   href="https://github.com/mnyoussef03/MNYF_Travel-"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -441,16 +433,14 @@ function App() {
                 <span>Elementor</span>
               </div>
               <div className="project-links">
-                <a
+                
                   href="https://yeltech.ma"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Live Demo
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub (N/A)
-                </a>
+                <span className="link-disabled">GitHub (N/A)</span>
               </div>
             </div>
             <div className="project-card">
@@ -469,12 +459,8 @@ function App() {
                 <span>Creative Writing</span>
               </div>
               <div className="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  Live Demo (Amazon KDP)
-                </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  GitHub (N/A)
-                </a>
+                <span className="link-disabled">Live Demo (Amazon KDP)</span>
+                <span className="link-disabled">GitHub (N/A)</span>
               </div>
             </div>
           </div>
@@ -510,14 +496,14 @@ function App() {
             </button>
           </form>
           <div className="social-links">
-            <a
+            
               href="https://github.com/mnyoussef03"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaGithub size={30} />
             </a>
-            <a
+            
               href="https://linkedin.com/in/youssef-el-mostain"
               target="_blank"
               rel="noopener noreferrer"
@@ -527,21 +513,21 @@ function App() {
             <a href="mailto:mnyoussef369@gmail.com">
               <FaEnvelope size={30} />
             </a>
-            <a
+            
               href="https://instagram.com/youssef_el_mostain"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaInstagram size={30} />
             </a>
-            <a
+            
               href="https://twitter.com/el_mostain_youssef"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FaTwitter size={30} />
             </a>
-            <a
+            
               href="https://wa.me/212608944738"
               target="_blank"
               rel="noopener noreferrer"
