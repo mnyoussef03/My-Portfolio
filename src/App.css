@@ -456,6 +456,18 @@ h2 {
   color: #0a0a0a;
 }
 
+/* Disabled project links (Coming Soon / N/A / In Progress) */
+.link-disabled {
+  color: #00D084;
+  opacity: 0.5;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid #00D084;
+  border-radius: 5px;
+  cursor: default;
+  display: inline-block;
+}
+
 /* Contact Section */
 .contact {
   background: #0a0a0a;
